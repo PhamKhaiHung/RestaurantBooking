@@ -1,0 +1,228 @@
+/* Style chung cho trang authentication */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(45deg, rgba(13, 202, 240, 0.1), rgba(13, 110, 253, 0.1));
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.auth-form-wrapper {
+    display: flex;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background: white;
+    min-height: 600px;
+}
+
+/* Form Đăng nhập */
+.login-container {
+    display: flex;
+    width: 100%;
+}
+
+.login-image {
+    width: 66.67%; /* 2/3 chiều rộng cho hình ảnh */
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.login-container form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: white;
+}
+
+/* Form đăng ký */
+.form-container-tab {
+    display: flex;
+    width: 100%;
+}
+
+.signup-image {
+    width: 66.67%; /* 2/3 chiều rộng cho hình ảnh */
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.form-container-tab form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background-color: white;
+    overflow-y: auto;
+    max-height: 600px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 700;
+}
+
+.social-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.social {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.3s;
+}
+
+.social:hover {
+    transform: scale(1.1);
+}
+
+.fb {
+    background-color: #3b5998;
+}
+
+.gg {
+    background-color: #db4437;
+}
+
+.ld {
+    background-color: #0077b5;
+}
+
+span {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #0dcaf0;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.login, button.signup {
+    background: linear-gradient(45deg, #0dcaf0, #0d6efd);
+    margin-top: 15px;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #0d6efd, #0dcaf0);
+}
+
+.mobile-switch {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.mobile-switch a {
+    color: #0dcaf0;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.mobile-switch a:hover {
+    text-decoration: underline;
+}
+
+/* Style cho container input có lỗi */
+.input-group {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.input-group input {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 13px;
+    min-height: 18px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .auth-form-wrapper {
+        flex-direction: column;
+    }
+
+    .login-image, .signup-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .login-container form, .form-container-tab form {
+        padding: 20px;
+    }
+
+    .form-container-tab form {
+        max-height: none;
+    }
+}
+
+/* Animation khi chuyển tab */
+.form-container-tab, .login-container {
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} 

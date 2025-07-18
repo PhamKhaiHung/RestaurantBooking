@@ -1,0 +1,418 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url("https://t4.ftcdn.net/jpg/05/62/17/79/360_F_562177976_dH3SgNcJBPjkvonJIyBvemkNCvPfOEKB.jpg") no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* ----- CÁC STYLE CHUNG ----- */
+h1 {
+  font-weight: bold;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+p {
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  margin: 15px 0 20px;
+  text-align: center;
+}
+
+span {
+  font-size: 12px;
+  margin-bottom: 10px;
+  display: block;
+  text-align: center;
+}
+
+a {
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+button,
+.button {
+  border-radius: 20px;
+  border: 1px solid #c45e10;
+  background-color: #c45e10;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in, background-color 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+}
+
+button:hover,
+.button:hover {
+  background-color: #a54e0c;
+}
+
+button:active,
+.button:active {
+  transform: scale(0.95);
+}
+
+button:focus,
+.button:focus {
+  outline: none;
+}
+
+/* CSS cho các thẻ form cụ thể sẽ được đặt trong section của chúng */
+/*
+form {
+  width: 100%;
+  text-align: center;
+  height: 100%;
+}
+*/
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.social-container {
+  margin: 20px 0;
+}
+
+.social-container a.social {
+  border: 1px solid #dddddd;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  height: 40px;
+  width: 40px;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.social.fb:hover { background: #1778f2; color: white; }
+.social.gg:hover { background: #db4437; color: white; }
+.social.ld:hover { background: #0077b5; color: white; }
+
+.signup,
+.login {
+  margin-top: 15px;
+}
+
+/* ----- CONTAINER CHÍNH VÀ FORM WRAPPER ----- */
+#authTabContainer {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden; /* QUAN TRỌNG: Để cắt bớt phần thừa của con */
+  width: 100%;
+  max-width: 900px;
+  height: 550px; /* CHIỀU CAO CỐ ĐỊNH CHO CONTAINER CHÍNH */
+}
+
+.auth-form-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%; /* Chiếm toàn bộ chiều cao của #authTabContainer */
+}
+
+/* ----- LOGIN CONTAINER (LAYOUT 2 CỘT) ----- */
+.login-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  align-items: stretch; /* Đảm bảo ảnh và form con có cùng chiều cao */
+  box-sizing: border-box;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  background-color: #ffffff;
+  padding: 30px 40px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  height: 100%; /* Chiếm toàn bộ chiều cao của .login-container */
+}
+
+.login-container .login-image {
+  width: 60%;
+  height: 100%; /* Chiếm toàn bộ chiều cao của .login-container */
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  flex-shrink: 0;
+}
+
+.login-container form input,
+.login-container form button {
+  width: 100%;
+  max-width: 320px;
+}
+.login-container form .social-container {
+    max-width: 320px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* ----- SIGNUP FORM CONTAINER (LAYOUT 2 CỘT VỚI FORM SCROLLABLE) ----- */
+.form-container-tab {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%; /* Chiếm toàn bộ chiều cao của .auth-form-wrapper */
+  background-color: #ffffff;
+  box-sizing: border-box;
+  /* overflow: hidden; Không cần ở đây, #authTabContainer đã có */
+}
+
+.form-container-tab .signup-image {
+  width: 60%;
+  height: 100%; /* Chiếm toàn bộ chiều cao của .form-container-tab */
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  flex-shrink: 0;
+}
+
+.form-container-tab form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* NỘI DUNG BẮT ĐẦU TỪ TRÊN CÙNG */
+  width: 40%;
+  height: 100%; /* CHIẾM TOÀN BỘ CHIỀU CAO CỦA .form-container-tab */
+  padding: 25px 30px;/* Điều chỉnh padding nếu cần */
+  box-sizing: border-box;
+  flex-shrink: 0;
+  overflow-y: auto; /* CHO PHÉP CUỘN DỌC KHI NỘI DUNG VƯỢT QUÁ */
+  /* background-color: #ffffff; /* Đã có ở .form-container-tab */
+  animation: fadeIn 0.5s ease-in-out;
+  margin: 0;
+}
+.input-group .error-message {
+  color: red;
+  font-size: 0.8em; /* Kích thước chữ nhỏ hơn */
+  text-align: left; /* Căn lề trái cho thông báo lỗi */
+  min-height: 1em;  /* Giữ một chút không gian ngay cả khi không có lỗi, tránh layout nhảy */
+  /* padding-left: 5px; */ /* Tùy chọn: Thêm chút padding nếu muốn */
+  display: block; /* Đảm bảo nó chiếm một dòng riêng */
+}
+.input-group .error-message {
+  font-size: 0.85em;
+  min-height: 1.1em;
+}
+.input-group {
+  width: 100%; /* Đảm bảo .input-group chiếm toàn bộ chiều rộng có sẵn trong form */
+  margin-bottom: 10px; /* Khoảng cách dưới mỗi nhóm input (input + error message) */
+  /* position: relative; */ /* Có thể cần nếu bạn muốn định vị error-message tuyệt đối, nhưng hiện tại không cần */
+}
+/* Style cho thanh cuộn (tùy chọn) */
+.form-container-tab form::-webkit-scrollbar {
+  width: 8px;
+}
+.form-container-tab form::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+.form-container-tab form::-webkit-scrollbar-thumb {
+  background: #c45e10;
+  border-radius: 10px;
+}
+.form-container-tab form::-webkit-scrollbar-thumb:hover {
+  background: #a54e0c;
+}
+
+.form-container-tab h1 {
+  color: #c45e10;
+  margin-top: 0; /* Đảm bảo H1 không bị đẩy xuống bởi margin */
+  margin-bottom: 15px;
+  font-size: 24px;
+  text-align: center;
+  width: 100%; /* Để text-align có tác dụng đúng */
+}
+
+.form-container-tab input[type="text"],
+.form-container-tab input[type="email"],
+.form-container-tab input[type="password"] {
+  margin: 7px 0; /* Điều chỉnh margin để tiết kiệm không gian */
+  padding: 10px 12px; /* Điều chỉnh padding */
+  font-size: 13px; /* Điều chỉnh font */
+  /* Các thuộc tính khác giữ nguyên */
+  background-color: #f8f8f8;
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+}
+
+.form-container-tab input[type="text"]:focus,
+.form-container-tab input[type="email"]:focus,
+.form-container-tab input[type="password"]:focus {
+  border-color: #c45e10;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(196, 94, 16, 0.2);
+  outline: none;
+}
+
+.form-container-tab .signup {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px; /* Điều chỉnh padding */
+  font-size: 14px; /* Điều chỉnh font */
+  letter-spacing: 1.5px;
+  border-radius: 30px;
+  background-image: linear-gradient(to right, #c45e10, #e07e30);
+  box-shadow: 0 4px 15px rgba(196, 94, 16, 0.3);
+  transition: all 0.3s ease;
+}
+
+.form-container-tab .signup:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(196, 94, 16, 0.4);
+  background-image: linear-gradient(to right, #b75609, #d67425);
+}
+
+.form-container-tab .social-container {
+  margin: 15px 0;
+  width: 100%; /* Để căn giữa các icon */
+  display: flex;
+  justify-content: center;
+}
+
+.form-container-tab .social-container a.social {
+  margin: 0 8px;
+  width: 40px;
+  height: 40px;
+  /* Các thuộc tính khác giữ nguyên */
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+.form-container-tab .social-container a.social:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+}
+
+.form-container-tab span {
+  color: #555;
+  margin: 5px 0 10px;
+  font-size: 12px;
+  /* Các thuộc tính khác giữ nguyên */
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mobile-switch {
+  display: block;
+  margin-top: 20px;
+  font-size: 14px;
+}
+.mobile-switch a {
+  color: #c45e10;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+/* ----- MEDIA QUERIES ----- */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  #authTabContainer {
+    margin: 20px auto;
+    height: auto; /* CHIỀU CAO TỰ ĐỘNG TRÊN MOBILE */
+    min-height: 0;
+    max-width: 95%;
+    border-radius: 8px;
+  }
+
+  .login-container,
+  .form-container-tab {
+    flex-direction: column; /* Layout cột trên mobile */
+    height: auto; /* Chiều cao tự động theo nội dung */
+  }
+
+  .login-container .login-image,
+  .form-container-tab .signup-image {
+    flex: none;
+    width: 100%;
+    max-height: 200px; /* Giới hạn chiều cao ảnh */
+    height: auto; /* Thêm để đảm bảo tỷ lệ */
+  }
+
+  .login-container form,
+  .form-container-tab form {
+    flex: none;
+    width: 100%;
+    padding: 20px;
+    height: auto; /* CHIỀU CAO TỰ ĐỘNG TRÊN MOBILE */
+    overflow-y: visible; /* KHÔNG CẦN CUỘN KHI LAYOUT ĐÃ LÀ CỘT VÀ CAO TỰ ĐỘNG */
+    /* max-height: none; Không cần thiết nếu height là auto */
+  }
+
+  .login-container form input,
+  .login-container form button,
+  .login-container form .social-container,
+  .form-container-tab input[type="text"], /* Áp dụng cho cả input form đăng ký */
+  .form-container-tab input[type="email"],
+  .form-container-tab input[type="password"],
+  .form-container-tab .signup,
+  .form-container-tab .social-container {
+      max-width: 100%; /* Cho phép input/button chiếm toàn bộ chiều rộng form */
+  }
+
+  h1 { font-size: 22px; }
+  .form-container-tab h1 { font-size: 22px; margin-bottom: 15px;}
+  .form-container-tab input[type="text"],
+  .form-container-tab input[type="email"],
+  .form-container-tab input[type="password"] {
+    font-size: 14px;
+    padding: 12px 15px;
+  }
+  .form-container-tab .signup {
+    font-size: 15px;
+    padding: 12px 15px;
+  }
+
+  p { margin: 10px 0 15px; }
+}
